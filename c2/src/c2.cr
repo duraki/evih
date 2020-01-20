@@ -1,7 +1,8 @@
-require "./c2/*"
+require "./c2/**"
 require "./init"
 
 require "logger"
+require "socket"
 
 module C2
   VERSION = "0.1.0"

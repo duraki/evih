@@ -8,6 +8,10 @@ module C2::CLI
       cmd.use = "c2"
       cmd.long = APPLICATION_DESC
 
+      cmd.run do |options, arguments|
+        puts cmd.help # => Render help screen
+      end
+
       # Listen for incomming session for beacon digest storage
       # Uses REVERSE_SH
       cmd.commands.add do |cmd|
@@ -16,10 +20,12 @@ module C2::CLI
         cmd.short = "Listen for incomming connection to establish beacon"
         cmd.long = cmd.short
         cmd.run do |options, arguments|
-          pp arguments
+          C2::CLI.listen
         end
       end
 
+      # Connect to remote session for beacon digest storage
+      # Uses BIND_SH
       cmd.commands.add do |cmd|
         cmd.use = "remote [ip] [port]"
 
@@ -41,11 +47,11 @@ module C2::CLI
         end
       end
 
-      # Initialize shell to beacon digest
+      # Initialize shell to beacon digest, run a shell session similar to meterpreter
       cmd.commands.add do |cmd|
         cmd.use = "init [beacon]"
 
-        cmd.short = "Initialize shell daemon to beacon session"
+        cmd.short = "Initialize a shell daemon to beacon session"
         cmd.long = cmd.short
         cmd.run do |options, arguments|
           pp arguments

@@ -11,7 +11,6 @@ print <<-'EOF'
   - @author Halis Duraki <duraki@linuxmail.org>
   - @web    https://duraki.github.io/evih/
 
-  Use -h for informational help.
 
 EOF
 
