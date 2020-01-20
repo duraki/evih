@@ -9,10 +9,21 @@ module C2::CLI
       cmd.long = APPLICATION_DESC
 
       # Listen for incomming session for beacon digest storage
+      # Uses REVERSE_SH
       cmd.commands.add do |cmd|
         cmd.use = "listen"
 
         cmd.short = "Listen for incomming connection to establish beacon"
+        cmd.long = cmd.short
+        cmd.run do |options, arguments|
+          pp arguments
+        end
+      end
+
+      cmd.commands.add do |cmd|
+        cmd.use = "remote [ip] [port]"
+
+        cmd.short = "Connect to remote connection to establish beacon"
         cmd.long = cmd.short
         cmd.run do |options, arguments|
           pp arguments
